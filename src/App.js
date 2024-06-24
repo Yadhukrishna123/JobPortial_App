@@ -9,6 +9,12 @@ import ProtectedRoute from "./Components/Utils/ProtectedRoute";
 import { useSelector } from "react-redux";
 import SideBar from "./Components/SideBar";
 import Jobs from "./Components/Jobs";
+import CreateJob from "./Components/CreateJob";
+import EditUser from "./Components/EditUser";
+import EditJob from "./Components/EditJob";
+import JobDetails from "./Components/JobDetails";
+import JobdeTaiLs from "./Components/JobdeTaiLs.";
+
 
 
 
@@ -30,12 +36,16 @@ function App() {
         <Route path="/home" element={<Home/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/signin" element={<Signin />}/>
-        <Route path="/jobs" element={<Jobs />}/>
-        
-       
+        <Route path="/addJob" element={<CreateJob />}/>
+        {/* <Route path="/details/:id" element={<JobDetails />}/> */}
+        <Route path="/jobdetails/:id" element={<JobdeTaiLs />}/>
+
         
         <Route path="/users" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Users/></ProtectedRoute>}/>
+        <Route path="/user/:id" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditUser/></ProtectedRoute>}/>
         <Route path="/sidebar" element={<ProtectedRoute isAuthenticated={isAuthenticated}><SideBar /></ProtectedRoute>}/>
+        <Route path="/jobs" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Jobs /></ProtectedRoute>}/>
+        <Route path="/job/:id" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditJob /></ProtectedRoute>}/>
        
         
 

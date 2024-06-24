@@ -1,0 +1,21 @@
+.sideBar{
+    background-color: rgb(72, 73, 73);
+    width: 200px;
+    height: calc(100vh - 56px);
+}
+.sideBar a {
+    color: white;
+}
+.sideBar a.active {
+    text-decoration: underline;
+}
+
+.sideBar .nav-link span{
+    padding-left: 15px;
+}
+.logout{
+    position: relative;
+    top: 200px;
+    
+}
+

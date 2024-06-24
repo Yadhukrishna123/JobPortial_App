@@ -6,7 +6,9 @@ import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {PencilSquare, } from "react-bootstrap-icons"
+import DeleteUser from './DeleteUser';
 
 
 
@@ -15,31 +17,35 @@ function Users() {
 
     const [users,setUsers] = useState([])
     const navigate = useNavigate()
+    
+
+    const getAllUsers =async ()=>{
+            
+
+      try {
+        const res = await axios.get("http://localhost:8080/api/v1/users",{
+          withCredentials:true,
+        })
+
+       setUsers(res.data.users)
+     
+
+      } catch (error) {
+          toast.error(error.response.data.message)
+
+           await new Promise((resolve)=> setTimeout(resolve, 2000))
+           navigate("/signin")
+           
+           
+      }
+  }
+
 
     useEffect(()=>{
 
-        const getAllUsers =async ()=>{
-            
-
-            try {
-              const res = await axios.get("http://localhost:8080/api/v1/users",{
-                withCredentials:true,
-              })
-
-             setUsers(res.data.users)
-            } catch (error) {
-                toast.error(error.response.data.message)
-
-                 await new Promise((resolve)=> setTimeout(resolve, 2000))
-                 navigate("/signin")
-                 
-                 
-            }
-        }
-
-
-        getAllUsers()
-    },[])
+       getAllUsers()
+       
+    },[navigate ])
 
 
   return (
@@ -61,7 +67,8 @@ function Users() {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
-          
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -71,6 +78,16 @@ function Users() {
             <td>{user.firstName}</td>
             <td>{user.lastName}</td>
             <td>{user.email}</td>
+            <td>
+              <Link to={`/user/${user._id}`}>
+              <PencilSquare style={{color:"red"}}/>
+              </Link>
+            </td>
+            <td>
+
+              <DeleteUser id={user._id } getAllUsers={getAllUsers}/>
+
+            </td>
           </tr>
         ))}
         

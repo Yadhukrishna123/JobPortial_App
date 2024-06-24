@@ -24,10 +24,9 @@ const [password,setPassword] = useState("")
 const navigate = useNavigate()
 
 const  handleSubmit =async (e) =>{
-    e.preventDefault()
-
-    const form = e.currentTarget;
-    if(form.checkValidity() === false){
+        e.preventDefault()
+        const form = e.currentTarget;
+        if(form.checkValidity() === false){
         e.stopPropagation()
         setValidated(true)
        }else{

@@ -1,96 +1,59 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
+import cookie from "js-cookie"
+import { useDispatch, useSelector } from 'react-redux';
+import './SideBar.css'
+import GroupIcon from '@mui/icons-material/Group';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import WorkIcon from '@mui/icons-material/Work';
+import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { userLogout } from './Redux/UserAuth';
 
 
 function SideBar() {
-  const menuItems = [
-    { text: 'Dashboard',  path: '/' },
-    { text: 'Users', path: '/users' },
-    { text: 'Jobs', path: '/    ' },
-    { text: 'Job Category', path: '/' },
-  ];
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-      });
 
-    const toggleDrawer =  (anchor, open) => (event)=>{
-        if(event.type ==="keydown" &&(event.key === "tab" || event .key === "shift") ){
-            return
-        }
+  const isAuthenticated = useSelector((state)=> state.user.isAuthenticated)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-        setState({...state, [anchor]: open})
-    }
 
-    const list = (anchor) => (
-        <Box
-          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-          role="presentation"
-          onClick={toggleDrawer( false)}
-          onKeyDown={toggleDrawer( false)}
-        >
-          <List>
-           {menuItems.map((item,index)=>(
-            <ListItem key={item.text} disablePadding>
-            <ListItemButton component = {Link} to={item.path}>
-              {/* <ListItemIcon>
-                {index % 3 === 0 ? <DashboardIcon /> : <PeopleAltIcon /> }
-              </ListItemIcon>
-              <ListItemIcon>
-                {index % 3 === 0 ? <DashboardIcon /> : <PeopleAltIcon /> }
-              </ListItemIcon> */}
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-           ))}
-          </List>
-          <Divider />
-         
-        </Box>
-      );
-
+    const handleLogout = ()=>{
+        dispatch(userLogout())
+        cookie.remove("token")
+        navigate("/signin")
+      }
 
   return (
     <div className='sideBar'>
-      {/* {(['left', 'right', 'top', 'bottom']  ).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))} */}
+        <Nav defaultActiveKey="/" className="flex-column">
+            <Nav.Link href="#">
+            <DashboardIcon/>
+            <span className='d-none d-md-inline'>DashBoard</span>
+            </Nav.Link>
+            <Nav.Link href="#link"  as ={Link} to="/users">
+              <GroupIcon/>
+              <span className='d-none d-md-inline'>Users</span>
+              </Nav.Link>
+            <Nav.Link href="#link" as ={Link} to="/jobs">
+           < WorkIcon/>
+              <span className='d-none d-md-inline'>Jobs</span>
+              </Nav.Link>
+            <Nav.Link href="#link" as ={Link} to="/home">
+            <HomeIcon/>
+            <span className='d-none d-md-inline'>Home</span>
+              </Nav.Link>
 
-      <React.Fragment>
-         <MenuIcon sx={{ fontSize: 40 }} onClick={toggleDrawer("left",true)}/>
-         <Drawer
-            anchor={"left"}
-            open={state["left"]}
-            onClose={toggleDrawer("left", false)}
-          >
-            {list("left")}
-          </Drawer>
-      </React.Fragment>
-      <img className='imge' src="https://problogger.com/jobs/wp-content/uploads/2019/10/Screen-Shot-2019-10-17-at-4.36.48-pm-1024x518.png" alt="" />
+              <Nav.Link className='logout' >
+            
+              {isAuthenticated ? <Button className="signinUp" variant="outline-danger" onClick={handleLogout}><LogoutIcon sx={{ fontSize: 40 }}/></Button> : <Nav.Link href="#pricing"><LogoutIcon sx={{ fontSize: 40 }}/></Nav.Link>}
+              </Nav.Link>
+            
+            </Nav>
+            
     </div>
   )
 }

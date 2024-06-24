@@ -15,10 +15,15 @@ const userAuthSlice = createSlice({
       state.user = action.payload.user
       state.token = action.payload.token
      
+    },
+    userLogout:(state)=>{
+      state.isAuthenticated = false
+      state.user = null
+      state.token = ''
     }
   }
 })
 
-export const {userAuthSuccess} =userAuthSlice.actions 
+export const {userAuthSuccess, userLogout} =userAuthSlice.actions 
 
 export default userAuthSlice.reducer
