@@ -42,6 +42,11 @@ function SideBar() {
            < WorkIcon/>
               <span className='d-none d-md-inline'>Jobs</span>
               </Nav.Link>
+              <Nav.Link href="#link" as ={Link} to="/details">
+           < WorkIcon/>
+              <span className='d-none d-md-inline'>Contact Details</span>
+              </Nav.Link>
+              
             <Nav.Link href="#link" as ={Link} to="/home">
             <HomeIcon/>
             <span className='d-none d-md-inline'>Home</span>

@@ -14,6 +14,8 @@ import EditUser from "./Components/EditUser";
 import EditJob from "./Components/EditJob";
 import JobDetails from "./Components/JobDetails";
 import JobdeTaiLs from "./Components/JobdeTaiLs.";
+import ContactDetails from "./Components/ContactDetails";
+import  Details  from "./Components/Details";
 
 
 
@@ -39,6 +41,7 @@ function App() {
         <Route path="/addJob" element={<CreateJob />}/>
         {/* <Route path="/details/:id" element={<JobDetails />}/> */}
         <Route path="/jobdetails/:id" element={<JobdeTaiLs />}/>
+        <Route path="/contactDetails/:id" element={<ContactDetails />}/>
 
         
         <Route path="/users" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Users/></ProtectedRoute>}/>
@@ -46,6 +49,8 @@ function App() {
         <Route path="/sidebar" element={<ProtectedRoute isAuthenticated={isAuthenticated}><SideBar /></ProtectedRoute>}/>
         <Route path="/jobs" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Jobs /></ProtectedRoute>}/>
         <Route path="/job/:id" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditJob /></ProtectedRoute>}/>
+        <Route path="/details" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Details /></ProtectedRoute>}/>
+       
        
         
 

@@ -45,7 +45,7 @@ function Header() {
       <img className="navImage" src="https://i1.wp.com/513relief.org/wp-content/uploads/2021/02/Jobs-Icon.png?w=1000&ssl=1" alt="icon" />
       <Navbar.Brand style={{paddingLeft:10,fontSize:30,fontStyle:'oblique'}}as= {Link} to="/">JOB-PORTIAL</Navbar.Brand>
       <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/home">Home</Nav.Link>
-      {/* <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/jobdetails">details</Nav.Link> */}
+      {/* <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/details">details</Nav.Link> */}
       
       {/* <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/jobs">Jobs</Nav.Link> */}
 

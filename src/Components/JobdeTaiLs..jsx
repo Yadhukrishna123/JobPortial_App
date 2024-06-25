@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -78,7 +78,7 @@ Experiance: {job.experience}
  <Card.Text>
  Location: {job.location}
 </Card.Text>
-<Button variant="primary" >Upply</Button>
+<Button variant="primary"  as ={Link} to={`/contactDetails/${job._id}`} >Upply</Button>
 </Card.Body>
 </Card>
     </Col>

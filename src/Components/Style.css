@@ -66,3 +66,17 @@
 .kkkk{
     display: flex;
 }
+.lik{
+    margin-top: 25px;
+    margin-left: 550px;
+    color: gray;
+}
+.li{
+    margin-top: 25px;
+    margin-left: 480px;
+    list-style-type: none;
+    
+}
+.a{
+    text-decoration: none;
+}

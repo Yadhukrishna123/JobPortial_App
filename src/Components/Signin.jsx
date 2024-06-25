@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import {userAuthSuccess} from "./Redux/UserAuth"
 import { useDispatch } from 'react-redux';
 import './Style.css'
@@ -101,11 +101,19 @@ function Signin() {
                         <Form.Control.Feedback type="invalid">please entre your password!</Form.Control.Feedback>
                         </Form.Group>
                        <Button  className="mb-3 border-0" variant='success' type="submit">Login</Button>
+                       <Form.Group className="mb-3" controlId="Email">
+                       <h6 className='lik' >OR</h6>
+                       <ul>
+                        <li className='li'><a href="/register" ><h4  >Sign Up</h4></a></li>
+                      </ul>
+                      </Form.Group>
                        </Form>
-                    
-                       
+                          
                 
                 </div>
+                
+                   
+                
             </Col>
                 
            
