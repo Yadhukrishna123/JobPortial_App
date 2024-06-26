@@ -23,7 +23,7 @@ function Users() {
             
 
       try {
-        const res = await axios.get("https://job-portial-backed-9.onrender.com/api/v1/users",{
+        const res = await axios.get("https://job-portial-backed-11.onrender.com/api/v1/users",{
           withCredentials:true,
         })
 

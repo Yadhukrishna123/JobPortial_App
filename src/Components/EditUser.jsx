@@ -29,7 +29,7 @@ function EditUser() {
     const  getUserDetails = async ()=>{
 
       try {
-        const res = await axios.get(`https://job-portial-backed-9.onrender.com/api/v1/user/${id}`,{
+        const res = await axios.get(`https://job-portial-backed-11.onrender.com/api/v1/user/${id}`,{
           withCredentials:true
         })
         console.log(res);
