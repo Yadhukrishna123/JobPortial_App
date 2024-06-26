@@ -31,7 +31,7 @@ const  handleSubmit =async (e) =>{
         setValidated(true)
        }else{
         try {
-            let res = await axios.post("http://localhost:8080/api/v1/signup",{
+            let res = await axios.post("https://job-portial-backed-9.onrender.com/api/v1/signup",{
                 firstName:firstName,
                 lastName:lastName,
                 email:email,
