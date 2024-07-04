@@ -34,7 +34,7 @@ function EditJob() {
       const  getJobDetails =async ()=>{
             
             try {
-                const res = await axios.get(`http://localhost:8080/api/v1/job/${id}`,{
+                const res = await axios.get(`https://job-portial-backed-11.onrender.com/api/v1/job/${id}`,{
                     withCredentials:true
                 })
                 console.log(res);
