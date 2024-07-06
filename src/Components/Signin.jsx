@@ -7,10 +7,11 @@ import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import {  useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import {userAuthSuccess} from "./Redux/UserAuth"
 import { useDispatch } from 'react-redux';
 import './Style.css'
+
 
 
 
@@ -32,7 +33,7 @@ function Signin() {
        }else{
         setValidated(true)
         try {
-            let res  =await axios.post("https://job-portial-backed-11.onrender.com/api/v1/signin",{
+            let res  =await axios.post("http://localhost:8080/api/v1/signin",{
                 email:email,
                 password:password
             },{
@@ -102,10 +103,12 @@ function Signin() {
                         </Form.Group>
                        <Button  className="mb-3 border-0" variant='success' type="submit">Login</Button>
                        <Form.Group className="mb-3" controlId="Email">
-                       <h6 className='lik' >OR</h6>
-                       <ul>
-                        <li className='li'><a href="/register" ><h4  >Sign Up</h4></a></li>
-                      </ul>
+                        <h5 style={{color:"gray",marginLeft:420,marginBottom:50}}>or</h5>
+                       <div className='md-3'>
+                       <Button variant="primary" size="lg" style={{marginLeft:380}} className="mb-3"  as ={Link} to="/register">
+                           Sign Up
+                        </Button>
+                       </div>
                       </Form.Group>
                        </Form>
                           

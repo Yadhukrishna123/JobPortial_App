@@ -10,6 +10,9 @@ import axios from 'axios';
 // import  Button  from 'react-bootstrap/Button';
 // import { Link } from 'react-router-dom';
 import JOb from './JOb';
+import Button from 'react-bootstrap/Button';
+
+import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom';
 
 
@@ -20,13 +23,14 @@ function Home() {
 
   const [jobs, setJobs] = useState([])
   
+  
 
   useEffect(() => {
 
     const getAllJobs =async ()=>{
 
       try {
-        const res =await axios.get("https://job-portial-backed-11.onrender.com/api/v1/jobs",{
+        const res =await axios.get("http://localhost:8080/api/v1/jobs",{
           withCredentials:true,
         })
         
@@ -56,9 +60,22 @@ function Home() {
         <div>
         <div fluid>
         <img className='HomeImage' src="https://jooinn.com/images/job-interview.jpg" alt="homeimage" />
-        <div >
-          <input className='searchBar' placeholder="Type to search......." />
-        </div>
+        {/* <div >
+         <Row  >
+          <Col >
+          <Form className="d-flex searchBar">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2 "
+              aria-label="Search"
+              
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+          </Col>
+         </Row>
+        </div> */}
         
       </div>
     </div>

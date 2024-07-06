@@ -71,7 +71,7 @@ function EditJob() {
       setValidated(true)
 
         try {
-          const res = await axios.put(`https://job-portial-backed-11.onrender.com/api/v1/job/${id}`,{
+          const res = await axios.put(`http://localhost:8080/api/v1/job/${id}`,{
             title:job.title,
             companyName:job.companyName,
             experience:job.experience,
@@ -85,9 +85,11 @@ function EditJob() {
           if(res.data.success){
             toast.success(res.data.message)
   
-            await new Promise((resolve)=>setTimeout(resolve, 1000));
-            navigate("/jobs")             
-  
+           
+          await new Promise((resolve)=> setTimeout(resolve, 2000))
+          navigate("/jobs")
+          
+            
         }else{
           toast.error(res.data.message)
         }
