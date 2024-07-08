@@ -30,7 +30,7 @@ function Home() {
     const getAllJobs =async ()=>{
 
       try {
-        const res =await axios.get("http://localhost:8080/api/v1/jobs",{
+        const res =await axios.get("https://job-portial-backed-12.onrender.com/api/v1/jobs",{
           withCredentials:true,
         })
         
