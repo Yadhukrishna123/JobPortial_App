@@ -39,6 +39,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/signin" element={<Signin />}/>
         <Route path="/addJob" element={<CreateJob />}/>
+        <Route path="/search" element={<JobDetails />}/>
         {/* <Route path="/details/:id" element={<JobDetails />}/> */}
         <Route path="/jobdetails/:id" element={<JobdeTaiLs />}/>
         <Route path="/contactDetails/:id" element={<ContactDetails />}/>
