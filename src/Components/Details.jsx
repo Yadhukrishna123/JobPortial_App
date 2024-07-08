@@ -16,10 +16,24 @@ import { Trash3 } from 'react-bootstrap-icons';
 function Details() {
   const [details,SetDetails] = useState([])
   const navigate = useNavigate()
+  const [jobs, setJobs] = useState([])
 
+
+
+  const getJobname = async()=>{
+    try {
+      const res =await axios.get("http://localhost:8080/api/v1/jobs",{
+        withCredentials:true,
+      })
+      setJobs(res.data.jobs)
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
+  }
+  
   const getAlldetails = async ()=>{
       try {
-        const res = await axios.get("https://job-portial-backed-12.onrender.com/api/v1/allDetails",{
+        const res = await axios.get("http://localhost:8080/api/v1/allDetails",{
           withCredentials:true
         })
         SetDetails(res.data.details)
@@ -34,6 +48,7 @@ function Details() {
 
         getAlldetails()
         
+        getJobname()
      },[navigate ])
  
 
@@ -54,6 +69,7 @@ function Details() {
       <thead>
         <tr>
           <th>#</th>
+          <th>Job title</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
@@ -62,7 +78,7 @@ function Details() {
           <th>Address</th>
           <th>Phone Number</th>
           <th>Resume</th>
-          <th>Delete</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -70,6 +86,9 @@ function Details() {
            {details && details.map((data,index)=>(
              <tr  key = {index} >
              <td>{index + 1}</td>
+            {jobs && jobs.map((g)=>(
+               <td>{g.title}</td>
+            ))}
              <td>{data.firstName}</td>
              <td>{data.lastName}</td>
              <td>{data.email}</td>
@@ -78,7 +97,7 @@ function Details() {
              <td>{data.address}</td>
              <td>{data.phoneNumber}</td>
              <td>{data.resume}</td>
-             <td><Trash3/></td>
+             
              
              
            </tr>
