@@ -31,7 +31,7 @@ function EditUser() {
    const  getUserDetails = async ()=>{
 
      try {
-      const  res =await axios.get(`https://job-portial-backed-12.onrender.com/api/v1/user/${id}`,{
+      const  res =await axios.get(`https://job-portial-backed-14.onrender.com/api/v1/user/${id}`,{
         withCredentials:true
       }) 
 
@@ -59,7 +59,7 @@ function EditUser() {
     }else{
       setValidated(true)
       try {
-        const res =await axios.put(`https://job-portial-backed-12.onrender.com/api/v1/user/${id}`,{
+        const res =await axios.put(`https://job-portial-backed-14.onrender.com/api/v1/user/${id}`,{
           firstName:user.firstName,
           lastName:user.lastName,
           email:user.email

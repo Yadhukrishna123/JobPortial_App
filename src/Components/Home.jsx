@@ -30,7 +30,7 @@ function Home() {
     const getAllJobs =async ()=>{
 
       try {
-        const res =await axios.get("https://job-portial-backed-12.onrender.com/api/v1/jobs",{
+        const res =await axios.get("https://job-portial-backed-14.onrender.com/api/v1/jobs",{
           withCredentials:true,
         })
         
@@ -48,7 +48,7 @@ function Home() {
   console.log(jobs);
 
 useEffect(()=>{
-fetch("http://localhost:8080/api/v1/search")
+fetch("https://job-portial-backed-14.onrender.com/api/v1/search")
 .then(res => res.json())
 .then(data => {
 setData(data)

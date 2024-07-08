@@ -34,7 +34,7 @@ function EditJob() {
       const  getJobDetails =async ()=>{
             
             try {
-                const res = await axios.get(`https://job-portial-backed-12.onrender.com/api/v1/job/${id}`,{
+                const res = await axios.get(`https://job-portial-backed-14.onrender.com/api/v1/job/${id}`,{
                     withCredentials:true
                 })
                 console.log(res);
@@ -71,7 +71,7 @@ function EditJob() {
       setValidated(true)
 
         try {
-          const res = await axios.put(`https://job-portial-backed-12.onrender.com/api/v1/job/${id}`,{
+          const res = await axios.put(`https://job-portial-backed-14.onrender.com/api/v1/job/${id}`,{
             title:job.title,
             companyName:job.companyName,
             experience:job.experience,

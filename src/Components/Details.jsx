@@ -18,14 +18,23 @@ function Details() {
   const navigate = useNavigate()
   const [jobs, setJobs] = useState([])
 
+ const getJobName = (id)=>
 
+  {
+    const job = jobs.find(o => o._id==id)
+    if(typeof(job) != "undefined"){
+         return job.title
+    }
+    return "unknown"
+    }
 
   const getJobname = async()=>{
     try {
-      const res =await axios.get("https://job-portial-backed-12.onrender.com/api/v1/jobs",{
+      const res =await axios.get("https://job-portial-backed-14.onrender.com/api/v1/jobs",{
         withCredentials:true,
       })
       setJobs(res.data.jobs)
+      console.log(res.data.jobs);
     } catch (error) {
       toast.error(error.response.data.message)
     }
@@ -33,7 +42,7 @@ function Details() {
   
   const getAlldetails = async ()=>{
       try {
-        const res = await axios.get("https://job-portial-backed-12.onrender.com/api/v1/allDetails",{
+        const res = await axios.get("https://job-portial-backed-14.onrender.com/api/v1/allDetails",{
           withCredentials:true
         })
         SetDetails(res.data.details)
@@ -69,7 +78,7 @@ function Details() {
       <thead>
         <tr>
           <th>#</th>
-          <th>Job title</th>
+          <th>Job</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
@@ -86,9 +95,7 @@ function Details() {
            {details && details.map((data,index)=>(
              <tr  key = {index} >
              <td>{index + 1}</td>
-            {jobs && jobs.map((g)=>(
-               <td>{g.title}</td>
-            ))}
+             <td>{getJobName(data.jobId)}</td>
              <td>{data.firstName}</td>
              <td>{data.lastName}</td>
              <td>{data.email}</td>
@@ -98,6 +105,7 @@ function Details() {
              <td>{data.phoneNumber}</td>
              <td>{data.resume}</td>
              
+             {/* <td><Trash3/></td> */}
              
              
            </tr>

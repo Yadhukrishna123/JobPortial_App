@@ -34,7 +34,7 @@ function CreateJob() {
             setValidate(true);
 
             try {
-                let res= await axios.post("https://job-portial-backed-12.onrender.com/api/v1/postJob",{
+                let res= await axios.post("https://job-portial-backed-14.onrender.com/api/v1/postJob",{
                     title:title,
                     description:description,
                     companyName:companyName,

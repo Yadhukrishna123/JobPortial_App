@@ -21,7 +21,7 @@ function DeleteJob({id, getAllJobs}) {
         setShow(false)
 
         try {
-            const res =await axios.delete(`https://job-portial-backed-12.onrender.com/api/v1/job/${id}`,{
+            const res =await axios.delete(`https://job-portial-backed-14.onrender.com/api/v1/job/${id}`,{
                 withCredentials:true
             })
 

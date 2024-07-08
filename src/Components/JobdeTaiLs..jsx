@@ -29,7 +29,7 @@ function JobdeTaiLs() {
 
     const getDetails =async ()=>{
          try {
-           const res = await axios.get(`https://job-portial-backed-12.onrender.com/api/v1/job/${id}`,{
+           const res = await axios.get(`http://localhost:8080/api/v1/job/${id}`,{
              withCredentials:true
            })
            setJob({
@@ -78,7 +78,7 @@ Experiance: {job.experience}
  <Card.Text>
  Location: {job.location}
 </Card.Text>
-<Button variant="primary"  as ={Link} to={`/contactDetails/${job._id}`} >Upply</Button>
+<Button variant="primary"  as ={Link} to={`/contactDetails/${id}`} >Upply</Button>
 </Card.Body>
 </Card>
     </Col>

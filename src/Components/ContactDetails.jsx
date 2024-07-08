@@ -26,6 +26,7 @@ const navigate = useNavigate()
     address:"",
     phoneNumber:"",
     resume:"",
+    
   })
   console.log(Jobs);
 
@@ -45,9 +46,9 @@ const navigate = useNavigate()
                     formData.append("address",Jobs.address)
                     formData.append("phoneNumber",Jobs.phoneNumber)
                     formData.append("resume",Jobs.resume)
-
+                    formData.append("jobId",id)
                     try {
-                       const res =await axios.post("https://job-portial-backed-12.onrender.com/api/v1/details",formData,{
+                       const res =await axios.post("https://job-portial-backed-14.onrender.com/api/v1/details",formData,{
                         headers:{
                              "Content-Type":"multipart/form-data",
                           },
