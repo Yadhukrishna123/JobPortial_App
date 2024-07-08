@@ -45,6 +45,7 @@ function Header() {
       <img className="navImage" src="https://i1.wp.com/513relief.org/wp-content/uploads/2021/02/Jobs-Icon.png?w=1000&ssl=1" alt="icon" />
       <Navbar.Brand style={{paddingLeft:10,fontSize:30,fontStyle:'oblique'}}as= {Link} to="/">JOB-PORTIAL</Navbar.Brand>
       <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/home">Home</Nav.Link>
+      <Nav.Link style={{paddingLeft:650,fontSize:20}}as ={Link} to="/sidebar"><MenuIcon  sx={{ fontSize: 40 }}/></Nav.Link>
 
       
       {/* <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/details">details</Nav.Link> */}
@@ -57,10 +58,10 @@ function Header() {
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text className='ms-auto'>
        
-        {isAuthenticated ? <>  <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/sidebar"><MenuIcon  sx={{ fontSize: 40 }}/></Nav.Link> </>: <Button className="signinUp" variant="outline-secondary" size="lg" as ={Link} to="./signin">Login</Button> }
+        {/* {isAuthenticated ? <>  <Nav.Link style={{paddingLeft:30,fontSize:20}}as ={Link} to="/sidebar"><MenuIcon  sx={{ fontSize: 40 }}/></Nav.Link> </>: <Button className="signinUp" variant="outline-secondary" size="lg" as ={Link} to="./signin">Login</Button> } */}
 
        
-       
+       {isAuthenticated ? "": <Nav.Link as ={Link} to="/signin"><Button variant="outline-secondary">Login</Button></Nav.Link>}
        
 
         

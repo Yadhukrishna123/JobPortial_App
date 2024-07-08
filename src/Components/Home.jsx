@@ -30,7 +30,7 @@ function Home() {
     const getAllJobs =async ()=>{
 
       try {
-        const res =await axios.get("https://job-portial-backed-12.onrender.com/api/v1/jobs",{
+        const res =await axios.get("http://localhost:8080/api/v1/jobs",{
           withCredentials:true,
         })
         
@@ -38,11 +38,7 @@ function Home() {
   
       } catch (error) {
   
-        
-  
-        
-  
-             
+               
   
       }
     }
@@ -51,16 +47,29 @@ function Home() {
   },[])
   console.log(jobs);
 
+useEffect(()=>{
+fetch("http://localhost:8080/api/v1/search")
+.then(res => res.json())
+.then(data => {
+setData(data)
+setFilterData(data)
+})
+.catch(err => console.log(err))
+}, [])
 
+const [data, setData] = useState([])
+const [filterData, setFilterData] = useState([])
+const handleFilter = (e)=>{
+const res = filterData.filter(f=>f.title.toLowerCase().includer(e))
 
-
+}
 
   return (
     <>
         <div>
         <div fluid>
         <img className='HomeImage' src="https://jooinn.com/images/job-interview.jpg" alt="homeimage" />
-        {/* <div >
+        <div >
          <Row  >
           <Col >
           <Form className="d-flex searchBar">
@@ -69,13 +78,19 @@ function Home() {
               placeholder="Search"
               className="me-2 "
               aria-label="Search"
+              onChange={e => handleFilter(e.target.value)}
+
+              
               
             />
+            <div className='search-result' >
+             
+            </div>
             <Button variant="outline-success">Search</Button>
           </Form>
           </Col>
          </Row>
-        </div> */}
+        </div>
         
       </div>
     </div>
