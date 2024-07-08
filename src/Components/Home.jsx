@@ -30,7 +30,7 @@ function Home() {
     const getAllJobs =async ()=>{
 
       try {
-        const res =await axios.get("http://localhost:8080/api/v1/jobs",{
+        const res =await axios.get("https://job-portial-backed-12.onrender.com/api/v1/jobs",{
           withCredentials:true,
         })
         
@@ -69,28 +69,7 @@ const res = filterData.filter(f=>f.title.toLowerCase().includer(e))
         <div>
         <div fluid>
         <img className='HomeImage' src="https://jooinn.com/images/job-interview.jpg" alt="homeimage" />
-        <div >
-         <Row  >
-          <Col >
-          <Form className="d-flex searchBar">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2 "
-              aria-label="Search"
-              onChange={e => handleFilter(e.target.value)}
-
-              
-              
-            />
-            <div className='search-result' >
-             
-            </div>
-            <Button variant="outline-success">Search</Button>
-          </Form>
-          </Col>
-         </Row>
-        </div>
+        
         
       </div>
     </div>
